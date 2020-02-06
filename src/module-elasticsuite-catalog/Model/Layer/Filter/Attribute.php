@@ -262,6 +262,7 @@ class Attribute extends \Magento\CatalogSearch\Model\Layer\Filter\Attribute impl
                         $optionLabel = trim((string) htmlspecialchars($option['label'], ENT_QUOTES | ENT_SUBSTITUTE, 'UTF-8', false));
                         $optionPosition++;
 
+                        $optionLabel = str_replace(["&lt;", "&gt;"], ["<", ">"], $optionLabel);
                         if ($optionLabel !== null && isset($items[$optionLabel])) {
                             $items[$optionLabel]['adminSortIndex'] = $optionPosition;
                             $items[$optionLabel]['value']          = $option['value'];
